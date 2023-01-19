@@ -1,21 +1,19 @@
 import { Component } from "react";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { nickName: "Yihua" };
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <p>Hi {this.state.nickName}</p>
+          <button onClick={() => this.setState({ nickName: "Andrei" })}>
+            Change Name
+          </button>
         </header>
       </div>
     );
