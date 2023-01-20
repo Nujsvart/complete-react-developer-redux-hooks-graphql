@@ -3,18 +3,27 @@ import { Component } from "react";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { nickName: "Yihua" };
+    this.state = {
+      monsters: [
+        {
+          name: "Linda",
+        },
+        {
+          name: "Frank",
+        },
+        {
+          name: "Jacky",
+        },
+      ],
+    };
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>Hi {this.state.nickName}</p>
-          <button onClick={() => this.setState({ nickName: "Andrei" })}>
-            Change Name
-          </button>
-        </header>
+        {this.state.monsters.map((monster, i) => (
+          <h1 key={i}> {monster.name}</h1>
+        ))}
       </div>
     );
   }
