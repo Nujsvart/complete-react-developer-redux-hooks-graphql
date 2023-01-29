@@ -39,7 +39,7 @@ const SignIn = () => {
       <button onClick={signInWithGoogleRedirect}>
         Sign in With Google Redirect
       </button>
-      <SignUpForm/>
+      <SignUpForm />
     </div>
   );
 };

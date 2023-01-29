@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FormInput from "../FormInput/FormInput";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -22,7 +23,7 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleChange = e => {
+  const changeHandler = e => {
     const { name, value } = e.target;
 
     setFormFields({ ...formFields, [name]: value });
@@ -50,46 +51,30 @@ const SignUpForm = () => {
       console.log("user creation encountered an error", error);
     }
   };
+
+  const formValues = Object.keys(formFields);
+
+  const titleCaseValues = el => {
+    const result = el.replace(/([A-Z])/g, " $1");
+    const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
+    return finalResult;
+  };
+
   return (
     <div>
       <h1>Sign up with your email and password</h1>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
-        <input
-          required
-          type="text"
-          onChange={handleChange}
-          name="displayName"
-          value={displayName}
-        />
-
-        <label>Email</label>
-        <input
-          required
-          type="email"
-          onChange={handleChange}
-          name="email"
-          value={email}
-        />
-
-        <label>Password</label>
-        <input
-          required
-          type="password"
-          onChange={handleChange}
-          name="password"
-          value={password}
-        />
-
-        <label>Confirm Password</label>
-        <input
-          required
-          type="password"
-          onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
-        />
-
+        {formValues.map(el => (
+          <FormInput
+            key={el}
+            required
+            label={titleCaseValues(el)}
+            type={el === displayName ? "text" : el}
+            onChange={changeHandler}
+            name={el}
+            value={formFields.hasOwnProperty(el) && formFields[el]}
+          />
+        ))}
         <button type="submit">Sign Up</button>
       </form>
     </div>
