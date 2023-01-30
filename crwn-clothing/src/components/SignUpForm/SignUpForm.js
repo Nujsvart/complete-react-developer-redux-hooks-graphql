@@ -1,5 +1,7 @@
 import { useState } from "react";
 import FormInput from "../FormInput/FormInput";
+import "./signUpForm.styles.scss";
+import Button from "../Button/Button";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -61,8 +63,9 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
-      <h1>Sign up with your email and password</h1>
+    <div className="sign-up-container">
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         {formValues.map(el => (
           <FormInput
@@ -75,7 +78,7 @@ const SignUpForm = () => {
             value={formFields.hasOwnProperty(el) && formFields[el]}
           />
         ))}
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
