@@ -3,7 +3,6 @@ import "./formInput.styles.scss";
 const FormInput = ({ label, ...otherProps }) => {
   return (
     <div className="group">
-      {console.log(otherProps.value)}
       <input className="form-input" {...otherProps} />
       {label && (
         <label
