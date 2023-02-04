@@ -1,7 +1,7 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
-import { DropdownContext } from "../../contexts/DropdownContext";
+import { CartContext } from "../../contexts/CartContext";
 import CartIcon from "../../components/CartIcon/CartIcon";
 import CartDropdown from "../../components/CartDropdown/CartDropdown";
 
@@ -11,7 +11,7 @@ import { signOutUser } from "../../utils/firebase";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(DropdownContext);
+  const { isCartOpen } = useContext(CartContext);
 
   const handleClick = e => console.log(e);
 
